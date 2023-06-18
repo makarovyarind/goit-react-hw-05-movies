@@ -1,0 +1,80 @@
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .movie-details button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .poster {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .poster img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .movie-info {
+    text-align: left;
+  }
+  
+  .movie-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info span {
+    font-size: 16px;
+  }
+  
+  .additional-info {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .additional-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .additional-info nav {
+    margin-top: 10px;
+  }
+  
+  .additional-info nav a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .additional-info nav a.active-link {
+    font-weight: bold;
+  }
+  
+  .loading {
+    font-size: 18px;
+    color: #555;
+  }
