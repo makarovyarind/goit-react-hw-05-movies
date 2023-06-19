@@ -9,7 +9,7 @@ const Reviews = lazy(() => import('../pages/Reviews/Reviews'));
 
 const App = () => {
   return (
-    <Router>
+    <Router basename='/'>
       <header>
         <nav className="navigation">
           <NavLink className="nav-link" to="/" >
