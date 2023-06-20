@@ -4,6 +4,7 @@ import './Searchbar.css';
 
 export function Searchbar({ onSubmit }) {
   const [searchName, setSearchName] = useState('');
+  
 
   const handleChange = e => {
     setSearchName(e.currentTarget.value.toLowerCase());

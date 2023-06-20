@@ -1,5 +1,6 @@
 import { useState, useEffect, Suspense } from 'react';
-import { NavLink, useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NavLink, useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { getMoviesDetails } from '../../services/api';
 import defaultPhoto from '../../components/img/no_image.jpg';
 import './MovieDetails.css';
@@ -7,19 +8,17 @@ import './MovieDetails.css';
 function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
-
-  let backLocation = location.state?.from;
+  const location = useLocation();
 
   const goBack = () => {
-    if (backLocation) {
-      navigate(-1);
+    if (location.state) {
+      navigate(location.state.from.pathname + location.state.from.search);
     } else {
       navigate('/');
     }
   };
-
+  
   useEffect(() => {
     const getMovie = async () => {
       const data = await getMoviesDetails(movieId);
@@ -81,6 +80,10 @@ function MovieDetails() {
       </div>
     </div>
   );
+}
+
+MovieDetails.propTypes = {
+  location: PropTypes.object.isRequired,
 }
 
 export default MovieDetails;

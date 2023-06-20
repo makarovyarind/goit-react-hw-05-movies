@@ -9,7 +9,7 @@ export function MoviesList({ movies }) {
       <ul className="MoviesList">
       {movies.map((item, index) => (
         <MovieListItem
-        key={`${item.id}+${index}`}
+          key={`${item.id}+${index}`}
           imageUrl={item.poster_path}
           title={item.title}
           id={item.id}

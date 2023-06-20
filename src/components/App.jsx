@@ -8,6 +8,7 @@ const Cast = lazy(() => import('../pages/Cast/Cast'));
 const Reviews = lazy(() => import('../pages/Reviews/Reviews'));
 
 const App = () => {
+
   return (
     <Router basename="/goit-react-hw-05-movies">
       <header>

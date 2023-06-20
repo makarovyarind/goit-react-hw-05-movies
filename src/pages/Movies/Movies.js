@@ -3,12 +3,15 @@ import { Searchbar } from "components/Searchbar/Searchbar";
 import { getMoviesWithName } from "services/api";
 import { Button } from "components/LoadButton/Button";
 import { MoviesList } from "components/MoviesList/MoviesList";
+import { useSearchParams } from "react-router-dom";
 
 function Movies() {
-  const [searchName, setSearchName] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchName = searchParams.get("searchName") || "";
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [searchState, setSearchState] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (searchName === "") {
@@ -16,9 +19,15 @@ function Movies() {
     }
 
     const getMovies = async () => {
-      const data = await getMoviesWithName(searchName, page);
-      if (data && data.results) {
-        setMovies((prevMovies) => [...prevMovies, ...data.results]);
+      try {
+        const data = await getMoviesWithName(searchName, page);
+        
+        if (data && data.results) {
+          setMovies((prevMovies) => [...prevMovies, ...data.results]);
+        }
+      } catch (error) {
+        setError(error);
+        alert(error);
       }
     };
 
@@ -30,7 +39,7 @@ function Movies() {
       return alert(`${name} already entered`);
     }
 
-    setSearchName(name);
+    setSearchParams({ searchName: name });
     setPage(1);
     setMovies([]);
     setSearchState(true);
@@ -39,6 +48,10 @@ function Movies() {
   const movieLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
+
+  if (error) {
+    alert(" An error occurred. Please try again later.");
+  }
 
   return (
     <div>
